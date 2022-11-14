@@ -1,0 +1,10 @@
+@import "~@Variables/_fonts";
+@import "~@Variables/_misc";
+
+* {
+  font-family: $font-regular;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
