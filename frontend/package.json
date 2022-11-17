@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist",
-    "dev": "yarn && webpack serve --mode development --env development --progress --config ./config/webpack/webpack.config.dev.js --open",
+    "dev": "yarn && webpack serve --config ./config/webpack/webpack.config.dev.js",
     "build": "yarn && yarn clean && webpack --config ./config/webpack/webpack.config.prod.js "
   },
   "devDependencies": {
@@ -33,6 +33,9 @@
     "yarn": "^1.22.19"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

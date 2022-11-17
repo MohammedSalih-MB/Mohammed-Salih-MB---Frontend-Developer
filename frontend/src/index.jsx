@@ -1,12 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import '@Styles/styles.scss';
 import App from '@Components/App';
 
-const mountRoot = document.getElementById('app');
+const container = document.getElementById('app');
+const root = createRoot(container);
 
-render(
-  <App />,
-  mountRoot
-);
+root.render(<App />);
