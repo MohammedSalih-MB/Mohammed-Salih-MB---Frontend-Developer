@@ -2,7 +2,6 @@
 @import "~@Variables/_colors";
 
 .spacex-tagline {
-  margin-bottom: 16px;
   background-image: url('~@Assets/images/rocket.jpg');
   background-size: cover;
   background-position: center;
@@ -20,7 +19,7 @@
 
   &__info {
     padding: 48px;
-    height: 500px;
+    height: 300px;
     z-index: 1;
     position: relative;
 
