@@ -4,14 +4,30 @@ export const fieldTypes = {
 };
 
 export const filterFormFields = {
-  status: {
-    label: 'Status',
-    key: 'status',
+  country: {
+    label: 'Country',
+    key: 'country',
     type: fieldTypes.select
   },
-  type: {
-    label: 'Type',
-    key: 'type',
+  active: {
+    label: 'Status',
+    key: 'active',
+    type: fieldTypes.select
+  },
+  name: {
+    label: 'Search',
+    key: 'name',
     type: fieldTypes.input
   }
 }
+
+export const statusOptions = [
+  {
+    label: 'Active',
+    value: 'true'
+  },
+  {
+    label: 'Inactive',
+    value: 'false'
+  }
+]
