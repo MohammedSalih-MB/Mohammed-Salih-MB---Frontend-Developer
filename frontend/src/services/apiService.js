@@ -8,6 +8,19 @@ const axiosInstance = axios.create({
   }
 });
 
+axiosInstance.interceptors.request.use(
+  config => {
+    const token = process.env.API_TOKEN;
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  error => Promise.reject(error)
+);
+
 const request = (options) => {
   const onSuccess = (response) => response.data;
 
