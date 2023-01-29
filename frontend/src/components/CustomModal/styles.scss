@@ -1,0 +1,33 @@
+@import "~@Variables/_misc";
+@import "~@Variables/_colors";
+
+.spacex-modal {
+  width: 95%;
+  max-width: 500px;
+  height: auto;
+  background-color: $light-grey;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 24;
+
+  &__title {
+    padding: 10px 24px;
+    font-family: $font-bold;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    overflow: auto;
+  }
+}
