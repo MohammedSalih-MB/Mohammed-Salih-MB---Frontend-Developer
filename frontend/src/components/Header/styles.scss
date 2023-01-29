@@ -1,0 +1,11 @@
+@import "~@Variables/_misc";
+@import "~@Variables/_colors";
+
+.spacex-app-header {
+  padding: 16px;
+  font-size: 32px;
+  font-family: $font-bold;
+  width: 100%;
+  color: $contrast;
+  background-color: $theme-color;
+}
