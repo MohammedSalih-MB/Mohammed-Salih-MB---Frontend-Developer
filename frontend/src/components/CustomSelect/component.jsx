@@ -8,7 +8,7 @@ export default (props) => {
       <TextField
         fullWidth
         select
-        label="Select"
+        label={props.label}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
         color="secondary"

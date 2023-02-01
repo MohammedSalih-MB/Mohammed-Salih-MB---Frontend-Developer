@@ -1,29 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CustomInput from '@Components/CustomInput';
 import CustomSelect from '@Components/CustomSelect';
 import CustomButton from '@Components/CustomButton';
-import { fieldTypes, filterFormFields } from './constants';
+import { fieldTypes, filterFormFields, statusOptions } from './constants';
+import { getFullList } from '@Scenes/Home/helper';
 
-export default () => {
+export default (props) => {
+  const [filter, setFilter] = useState({});
+
+  const onFilterChange = (newValue, key) => {
+    setFilter({
+      ...filter,
+      [key]: newValue
+    })
+  }
+
+  const getOptions = (key) => {
+    switch(key) {
+      case 'country':
+        return props.countries.map(country => ({
+          label: country,
+          value: country
+        }));
+
+      case 'active':
+        return statusOptions;
+    }
+  }
+
+  const isFiltered = (item) => {
+    for (const key in filter) {
+      if (!filter[key]) {
+        continue;
+      }
+
+      if (
+        filterFormFields[key].type === fieldTypes.select
+        && item[key].toString() !== filter[key]
+      ) {
+        return true;
+      }
+
+      if (
+        filterFormFields[key].type === fieldTypes.input
+        && !item[key].toLowerCase().includes(filter[key].toLowerCase())
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  const onSearch = () => {
+    const fullList = getFullList();
+    const newList = fullList.filter(item => {
+      return !isFiltered(item);
+    });
+
+    props.setList(newList);
+  }
+
+  const onClear = () => {
+    setFilter({});
+    const fullList = getFullList();
+    props.setList(fullList);
+  }
+
   const renderFormField = (field) => {
     switch(field.type) {
       case fieldTypes.input:
         return (
           <CustomInput
             label={field.label}
+            value={filter[field.key] || ''}
+            onChange={(newValue) => { onFilterChange(newValue, field.key) }}
           />
         )
 
       case fieldTypes.select:
         return (
           <CustomSelect
-            options={[
-              { label: 'test 1', value: 1 },
-              { label: 'test 2', value: 2 },
-              { label: 'test 3', value: 3 },
-              { label: 'test 4', value: 4 }
-            ]}
+            label={field.label}
+            options={getOptions(field.key)}
+            value={filter[field.key] || ''}
+            onChange={(newValue) => { onFilterChange(newValue, field.key) }}
           />
         )
 
@@ -51,10 +113,14 @@ export default () => {
       <div className='spacex-filter-form__fields'>
         {Object.values(filterFormFields).map(renderField)}
 
-        <div className="spacex-filter-form__fields-field">
+        <div className="spacex-filter-form__fields-field spacex-filter-form__btns">
           <CustomButton
             content="Search"
-            onClick={() => {}}
+            onClick={onSearch}
+          />
+          <CustomButton
+            content="Clear"
+            onClick={onClear}
           />
         </div>
       </div>

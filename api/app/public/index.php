@@ -1,7 +1,5 @@
 <?php
-require_once "vendor/autoload.php";
-require_once "controller.php";
-require_once "rocket.php";
+require_once "../../vendor/autoload.php";
 
 use App\Controller;
 

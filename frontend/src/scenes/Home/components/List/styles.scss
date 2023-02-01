@@ -14,10 +14,10 @@
   &__content {
     padding: 0 36px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 
     &-item {
-      width: 360px;
+      width: 330px;
       margin: 12px;
       border: 2px solid white;
       border-radius: 4px;
@@ -36,7 +36,6 @@
 
       &-info {
         display: flex;
-        align-items: center;
         color: $contrast;
         padding: 10px 0 0 10px;
 
@@ -49,6 +48,7 @@
         p {
           font-size: 16px;
           flex: 1;
+          line-height: 19px;
         }
 
         span {
