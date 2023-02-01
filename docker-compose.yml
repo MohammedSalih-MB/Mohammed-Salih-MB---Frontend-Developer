@@ -1,0 +1,20 @@
+version: '3'
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - 80:80
+        volumes:
+            - ./api/app:/api/app
+    
+    php:
+        build:
+            context: ./api
+            dockerfile: PHP.Dockerfile
+        env_file:
+            - ./api/.env
+        volumes:
+            - ./api/app:/api/app
+            - ./api/vendor/:/api/vendor/
