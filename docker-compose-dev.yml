@@ -1,0 +1,29 @@
+version: '3'
+services:
+    web:
+        image: nginx:1.23.3-alpine
+        ports:
+            - 80:80
+        volumes:
+            - ./api/app:/api/app
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+    
+    php:
+        build:
+            context: ./api
+            dockerfile: PHP.Dockerfile
+        env_file:
+            - ./api/.env
+        volumes:
+            - ./api/app:/api/app
+            - ./api/vendor/:/api/vendor/
+
+    fe-dev:
+        build:
+            context: ./frontend
+            dockerfile: dev.Dockerfile
+        ports:
+            - 9000:9000
+        stdin_open: true
+        volumes:
+            - ./frontend:/frontend

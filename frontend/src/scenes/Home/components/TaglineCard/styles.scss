@@ -1,0 +1,37 @@
+@import "~@Variables/_misc";
+@import "~@Variables/_colors";
+
+.spacex-tagline {
+  background-image: url('~@Assets/images/rocket.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
+
+  &__info {
+    padding: 48px;
+    height: 300px;
+    z-index: 1;
+    position: relative;
+
+    h2 {
+      font-family: $font-bold;
+      font-size: 75px;
+      color: $contrast;
+    }
+
+    p {
+      font-size: 45px;
+      color: $light-grey;
+    }
+  }
+}

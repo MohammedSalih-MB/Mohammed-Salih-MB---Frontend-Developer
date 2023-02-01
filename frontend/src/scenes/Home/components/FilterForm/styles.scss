@@ -1,0 +1,33 @@
+@import "~@Variables/_misc";
+@import "~@Variables/_colors";
+
+.spacex-filter-form {
+  background-color: $theme-color;
+
+  &__info {
+    padding: 32px 48px;
+    font-family: $font-bold;
+    font-size: 40px;
+    color: $contrast;
+  }
+
+  &__fields {
+    padding: 0 36px;
+    display: flex;
+    flex-wrap: wrap;
+
+    &-field {
+      width: 330px;
+      margin: 12px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+
+    .spacex-button {
+      width: 48%;
+    }
+  }
+}
