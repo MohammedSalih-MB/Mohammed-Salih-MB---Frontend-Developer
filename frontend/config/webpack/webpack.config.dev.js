@@ -32,9 +32,6 @@ const devConfig = merge(webpackConfig, {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
-    new webpack.EnvironmentPlugin({
-      ENV: process.env.ENV || 'development'
-    }),
   ],
 });
 
